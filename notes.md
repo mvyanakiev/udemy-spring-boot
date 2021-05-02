@@ -8,7 +8,7 @@
 **IOC container** e генерично име и може да бъде имплементирано по различни начини - Application context и Bean Factory.  
 Application context e подобрен Bean Factory с добавени i18n, АОР и WebApplicationContext. Освен в случаите с много ограничена памет се препоръчва да се ползва Application context.
 
-	> IOC container е всяко нещо, което имлементира Inversion of controll.  
+>	IOC container е всяко нещо, което имлементира Inversion of controll.  
 	Application context e IOC container.  
 	Идеята е да вдигне и менажирa всички бийнове. (Component, Repository, Service също са бийнове).
 
@@ -41,7 +41,7 @@ Application context e подобрен Bean Factory с добавени i18n, А
 Ново: всичко е с `@Autowired`
 
 
-	> AOP -> Aspect oriented programming.
+>	AOP -> Aspect oriented programming.
 
 
 
