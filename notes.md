@@ -3,9 +3,9 @@
 
 # Базови неща за Спринг
 
-Inversion of controll e фреймуърка да разбере кой клас от какви депендънсита се нуждае да ги намери и предостави.  
+**Inversion of controll** e фреймуърка да разбере кой клас от какви депендънсита се нуждае да ги намери и предостави.  
 Т.е. тази работа я върши фреймуърка, а не самите класове на приложението.  
-IOC container e генерично име и може да бъде имплементирано по различни начини - Application context и Bean Factory.  
+**IOC container** e генерично име и може да бъде имплементирано по различни начини - Application context и Bean Factory.  
 Application context e подобрен Bean Factory с добавени i18n, АОР и WebApplicationContext. Освен в случаите с много ограничена памет се препоръчва да се ползва Application context.
 
 > IOC container е всяко нещо, което имлементира Inversion of controll.  
@@ -100,7 +100,7 @@ CDI e JavaEE standart
 Добавяш  
 spring-core дефинира мениджмънта на депендъситата   
 spring-context управлява контекста  
-```
+```xml
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-core</artifactId>
@@ -126,7 +126,7 @@ public class OurClass {
 		AnnotationConfigApplicationContext applicationContext =
 				new AnnotationConfigApplicationContext(OurClass.class);
 				
-					do some things...
+					make some things...
 				
 		applicationContext.close();
 	}
@@ -167,7 +167,7 @@ public class OurClass {
 		try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(
 				"applicationContext.xml")) {
 
-			do some things...
+			make some things...
 		}
 	}
 }
@@ -198,7 +198,7 @@ public class OurClass {
 
 
 ## Четене на данни от външни файлове
-Правиш си файл "app.properties" в ресурс папката и Main-а добавяш `@PropertySource("classpath:app.properties")`.   
+Правиш си файл "app.properties" в ресурс папката и в Main-а добавяш `@PropertySource("classpath:app.properties")`.   
 После четеш с:
 ```Java
 	@Value("${external.service.url}")
