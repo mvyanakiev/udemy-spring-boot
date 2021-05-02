@@ -43,7 +43,7 @@ Application context e подобрен Bean Factory с добавени i18n, А
 
 >	AOP -> Aspect oriented programming.
 
-
+---
 
 ## Scope
 По дефолт прави един бийн и всеки път като ти потрябва ти го дава него (singelton).  
@@ -65,11 +65,13 @@ Application context e подобрен Bean Factory с добавени i18n, А
 В Спринг сингълтън означава 1 инстанция за целия Application context, но може да има много в рамките на JVM.
 В Java Design patterns (Gang of four) singelton означава 1 инстанция за цялата JVM.
 
+---
 
 ## Lifecycle
 След като бийна е създаден и инциализиран като депендънси ще бъде извикан метода анотиран с: `@PostConstruct`.  
 Преди да се махне бийна от контекста се изпълнява метода анотиран с: `@PreDestroy`.
 
+---
 
 ## CDI
 CDI - Context and Dependency Injection
@@ -90,6 +92,8 @@ CDI e JavaEE standart
 		<version>1</version>
 	</dependency>
 ```
+
+---
 
 
 ## Махане на SpringBoot
@@ -133,6 +137,8 @@ spring-context – управлява контекста
 	}
 }
 ```
+
+---
 
   
 ## Използване на XML за настройка
@@ -197,6 +203,8 @@ spring-context – управлява контекста
 </beans>
 ```
 
+---
+
 
 ## Четене на данни от външни файлове
 Правиш си файл "app.properties" в ресурс папката и в Main-а добавяш `@PropertySource("classpath:app.properties")`.   
@@ -206,6 +214,8 @@ spring-context – управлява контекста
 	private String url;
 ```
 Идеята е, че имаш изнесен файл със стойности за променливите и на тест може да са едни, а на продукшън други, без да се налага да променяш нещо.
+
+---
 
 
 # Тестване
