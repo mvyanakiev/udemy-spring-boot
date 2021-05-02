@@ -8,9 +8,9 @@
 **IOC container** e генерично име и може да бъде имплементирано по различни начини - Application context и Bean Factory.  
 Application context e подобрен Bean Factory с добавени i18n, АОР и WebApplicationContext. Освен в случаите с много ограничена памет се препоръчва да се ползва Application context.
 
-> IOC container е всяко нещо, което имлементира Inversion of controll.  
-Application context e IOC container.  
-Идеята е да вдигне и менажирa всички бийнове. (Component, Repository, Service също са бийнове).
+	> IOC container е всяко нещо, което имлементира Inversion of controll.  
+	Application context e IOC container.  
+	Идеята е да вдигне и менажирa всички бийнове. (Component, Repository, Service също са бийнове).
 
 
 Имаш 3 въпроса които Спринг трябва да знае:
@@ -41,7 +41,7 @@ Application context e IOC container.
 Ново: всичко е с `@Autowired`
 
 
-> AOP -> Aspect oriented programming.
+	> AOP -> Aspect oriented programming.
 
 
 
@@ -95,11 +95,12 @@ CDI e JavaEE standart
 ## Махане на SpringBoot
 
 Ако не искаш да ползваш Spring Boot, а само IOC концепцията.  
-От pom-а  
+От pom-а: 
 Махаш spring-boot-starter.  
-Добавяш  
-spring-core дефинира мениджмънта на депендъситата   
-spring-context управлява контекста  
+Добавяш:  
+spring-core – дефинира мениджмънта на депендъситата   
+spring-context – управлява контекста  
+
 ```xml
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -117,18 +118,18 @@ spring-context управлява контекста
 Трябва да създадеш контекста чрез `AnnotationConfigApplicationContext` вместо с run.
 
 ```Java
-@Configuration
-@ComponentScan
-public class OurClass {
-
-	public static void main(String[] args) {
-
-		AnnotationConfigApplicationContext applicationContext =
-				new AnnotationConfigApplicationContext(OurClass.class);
-				
-					make some things...
-				
-		applicationContext.close();
+	@Configuration
+	@ComponentScan
+	public class OurClass {
+	
+		public static void main(String[] args) {
+	
+			AnnotationConfigApplicationContext applicationContext =
+					new AnnotationConfigApplicationContext(OurClass.class);
+					
+						make some things...
+					
+			applicationContext.close();
 	}
 }
 ```
@@ -160,17 +161,17 @@ public class OurClass {
 `try` блока без `catch` затваря контекста автоматично независимо дали се е заредил контекста или не
 
 ```Java
-public class OurClass {
-
-	public static void main(String[] args) {
-
-		try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-				"applicationContext.xml")) {
-
-			make some things...
+	public class OurClass {
+	
+		public static void main(String[] args) {
+	
+			try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+					"applicationContext.xml")) {
+	
+				make some things...
+			}
 		}
 	}
-}
 ```
 
 ### За да използваш component scan с XML дефиниция трябва да добавиш и схема за component scan в хедъра на XML-а.
