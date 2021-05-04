@@ -102,15 +102,18 @@ CDI e JavaEE standart
 От pom-а: 
 Махаш spring-boot-starter.  
 Добавяш:  
-spring-core – дефинира мениджмънта на депендъситата   
-spring-context – управлява контекста  
 
+spring-core – дефинира мениджмънта на депендъситата   
 ```xml
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-core</artifactId>
 	</dependency>
 
+```
+
+spring-context – управлява контекста  
+```xml
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>
@@ -119,7 +122,7 @@ spring-context – управлява контекста
 
 
 На Main-а махаш `@SpringBootApplication` и слагаш `@Configuration` и `@ComponentScan`
-Трябва да създадеш контекста чрез `AnnotationConfigApplicationContext` вместо с run.
+Трябва да създадеш контекста чрез `AnnotationConfigApplicationContext` вместо с `run`.
 
 ```Java
 	@Configuration
@@ -219,6 +222,11 @@ spring-context – управлява контекста
 
 
 # Тестване
+
+## Junut 4
+`@BeforeClass` и `@AfterClass` трябва да са статични.
+
+## Mockito
 
 
 
