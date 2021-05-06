@@ -102,34 +102,37 @@ CDI e JavaEE standart
 От pom-а: 
 Махаш spring-boot-starter.  
 Добавяш:  
-
+javax.inject от горе  
 spring-core – дефинира мениджмънта на депендъситата   
-```xml
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-core</artifactId>
-	</dependency>
-
-```
-
 spring-context – управлява контекста  
+
 ```xml
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-context</artifactId>
-	</dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>5.3.6</version>
+    </dependency>
+
 ```
 
+```xml
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>5.2.8.RELEASE</version>
+    	<scope>compile</scope>
+    </dependency>
+```
 
 На Main-а махаш `@SpringBootApplication` и слагаш `@Configuration` и `@ComponentScan`
 Трябва да създадеш контекста чрез `AnnotationConfigApplicationContext` вместо с `run`.
 
 ```Java
-	@Configuration
-	@ComponentScan
-	public class OurClass {
+@Configuration
+@ComponentScan("com.milko.elastic")
+public class OurClass {
 	
-		public static void main(String[] args) {
+	public static void main(String[] args) {
 	
 			AnnotationConfigApplicationContext applicationContext =
 					new AnnotationConfigApplicationContext(OurClass.class);
@@ -230,12 +233,68 @@ spring-context – управлява контекста
 ---
 
 ## Mockito
-Тестваш нещо, на което нямаш имплементацията.
+Заместваш нещо, на което нямаш имплементацията.
 Работи през интерфейс.
+Не ти трябва да взимаш контекста.
 
 ---
 
 ## Тестване със Spring
+
+В pom-а трябва да има:
+```XML
+	<dependency>	
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<scope>test</scope>
+	</dependency>
+```
+
+### Зареждане на контекста в тестовия метод (с анотации):
+```Java
+//Load the context
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = Config.class) // Или този с анотацията @Configuration
+public class BinarySearchTest {
+
+	// Взимаш каквото ти трябва
+	@Autowired
+	BinarySearchImpl binarySearch;
+
+	@Test
+	public void testBasicScenario() {
+		
+		// извикваш
+		int actualResult = binarySearch.binarySearch(new int[] {}, 5);
+
+		// проверяваш
+		assertEquals(3, actualResult);
+	}
+}
+```
+
+### Зареждане на контекста в тестовия метод (с XML):
+```Java
+@RunWith(SpringRunner.class)
+@ContextConfiguration(locations="/testContext.xml") // пътя до конфигурационния XML
+public class BinarySearchTest {
+
+	@Autowired
+	BinarySearchImpl binarySearch;
+
+	@Test
+	public void testBasicScenario() {
+		...съшото като горе
+	}
+}
+```
+
+---
 
 
 
