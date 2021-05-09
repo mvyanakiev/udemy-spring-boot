@@ -22,7 +22,7 @@ Application context e подобрен Bean Factory с добавени i18n, А
 За да търси и на други места, в Мейн класа освен `@SpringBootApplication` трябва да имаш и `@ComponentScan("пътя с бийновете")`
 Търси за класове с анотации.
 Започва да съзадава бийновете и да идентифицира депендънситата.  
-Когато има `@SpringBootApplication` създава и а AutoConfiguration.  
+Когато има `@SpringBootApplication` създава и AutoConfiguration.  
 Според какво намира започва да инициализира необходимите класове.
 
 
@@ -299,7 +299,8 @@ public class BinarySearchTest {
 ---
 
 
-
+До 58 -> 58. Step 6 : Spring Boot vs Spring vs Spring MVC
+[here](https://www.udemy.com/course/spring-tutorial-for-beginners/learn/lecture/7725806#overview)
 
 
 
