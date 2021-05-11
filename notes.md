@@ -7,6 +7,9 @@
 Т.е. тази работа я върши фреймуърка, а не самите класове на приложението.  
 **IOC container** e генерично име и може да бъде имплементирано по различни начини - Application context и Bean Factory.  
 Application context e подобрен Bean Factory с добавени i18n, АОР и WebApplicationContext. Освен в случаите с много ограничена памет се препоръчва да се ползва Application context.
+Работата на Spring Framework е да осъществи Depenedency injection and testability.
+Spring Boot добавя автоматични конфигурации за повечето използвани неща (jdbc, actuator, log4j2 etc.)  
+
 
 >	IOC container е всяко нещо, което имлементира Inversion of controll.  
 	Application context e IOC container.  
@@ -298,22 +301,7 @@ public class BinarySearchTest {
 
 ---
 
-
-До 58 -> 58. Step 6 : Spring Boot vs Spring vs Spring MVC
-[here](https://www.udemy.com/course/spring-tutorial-for-beginners/learn/lecture/7725806#overview)
-
-
-
-
-
-
-
-
-
-
-
-
-
+До 61 Spring Boot Actuator.
 
 
 
