@@ -46,9 +46,6 @@ Spring Boot добавя автоматични конфигурации за п
 Старо: За всички задължителни депендънситата (без които класа не може да работи) да се използва конструктор инджекшън, за останалите `@Autowired`.  
 Ново: всичко е с `@Autowired`
 
-
->	AOP -> Aspect oriented programming.
-
 ---
 
 ## Scope
@@ -301,7 +298,71 @@ public class BinarySearchTest {
 
 ---
 
-До 61 Spring Boot Actuator.
+# Actuator
+
+За да го има:
+
+```XML
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-actuator</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-rest-hal-browser</artifactId>
+	</dependency>
+```
+
+в /src/main/resources/application.properties трябва да има:  
+`management.endpoints.web.exposure.include=*`
+
+Използва се:  
+`localhost:8080/actuator`
+или HAL browser:  
+`localhost:8080/browser/index.html#/`
+и пишеш `/actuator` в Explorer полето
+
+---
+
+
+# Dev Tools
+
+Съкращава времето за рестарт при малки промени.
+Не зарежда всички депендънсита, а само апп-а.
+
+```XML
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+	</dependency>
+```
+
+---
+
+
+# AOP
+
+[Repo](https://github.com/in28minutes/spring-master-class/tree/master/03-spring-aop)
+
+>	AOP -> Aspect oriented programming.
+
+_*AOP dependency is not available on the Spring Initializr website anymore.*_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
