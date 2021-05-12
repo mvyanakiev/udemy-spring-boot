@@ -328,7 +328,7 @@ public class BinarySearchTest {
 
 # Dev Tools
 
-Съкращава времето за рестарт при малки промени.
+Съкращава времето за рестарт при малки промени.  
 Не зарежда всички депендънсита, а само апп-а.
 
 ```XML
@@ -347,7 +347,7 @@ public class BinarySearchTest {
 
 >	AOP -> Aspect oriented programming.
 
-_*AOP dependency is not available on the Spring Initializr website anymore.*_
+_AOP dependency is not available on the Spring Initializr website anymore._
 
 
 
