@@ -349,12 +349,58 @@ public class BinarySearchTest {
 
 _AOP dependency is not available on the Spring Initializr website anymore._
 
+```XML
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-aop</artifactId>
+	</dependency>
+```
 
+AspectJ е по-силно от Spring AOP.  
+Използваш AOP за да прекъснеш всякакви извиквания на бийновете.  
+Loggingh, Security, Performence tracking взаимодействат между всички слоеве (@Srvive, @Repository etc.) на апп-а - Cross-cutting concerns.
+Имплементираш на едно място и проверяваш например дали юзера има достъп за всички класове и методи от целия пекидж.  
 
+Когато Мейн класа имплементира CommandLineRunner получаваш run-методa.  
+Също така вече не е нужно да са ти статични методите в Мейн класа, можеш и да @Autowired други бийнове.
 
+```Java
+	@SpringBootApplication
+	public class SpringAopApplication implements CommandLineRunner{
+		
+		private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+		@Autowired
+		private Business1 business1;
+	
+		@Autowired
+		private Business2 business2;
+		
+		public static void main(String[] args) {
+			SpringApplication.run(SpringAopApplication.class, args);
+		}
+	
+		@Override
+		public void run(String... args) throws Exception {
+			logger.info(business1.calculateSomething());
+			logger.info(business2.calculateSomething());
+		}
+	}
+```
 
+Трябва да му кажеш кои методи прекъсваш.  
+Првиш си клас с анотации `@Aspect` и @Configuration`
 
+На метода, който ще изпълняваш, когато прекъсваш: 
 
+> @Before прекъсва преди изпълнението. 
+
+`@Before("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")`  
+
+1-ва звезда -> всичко в пекиджа
+пекиджа
+.* -> всички класове
+второ .* -> всички методи
 
 
 
