@@ -358,10 +358,10 @@ _AOP dependency is not available on the Spring Initializr website anymore._
 
 AspectJ е по-силно от Spring AOP.  
 Използваш AOP за да прекъснеш всякакви извиквания на бийновете.  
-Loggingh, Security, Performence tracking взаимодействат между всички слоеве (@Srvive, @Repository etc.) на апп-а - Cross-cutting concerns.  
+Loggingh, Security, Performence tracking взаимодействат между всички слоеве (@Servive, @Repository etc.) на апп-а - Cross-cutting concerns.  
 Имплементираш на едно място и проверяваш например дали юзера има достъп за всички класове и методи от целия пекидж.  
 
-Когато Мейн класа имплементира CommandLineRunner получаваш run-методa.  
+Когато Мейн класа имплементира `CommandLineRunner` получаваш `run`-методa.  
 Също така вече не е нужно да са ти статични методите в Мейн класа, можеш и да `@Autowired` други бийнове.
 
 ```Java
@@ -392,7 +392,7 @@ Loggingh, Security, Performence tracking взаимодействат между
 
 *PointCut*: какво и къде ще прекъснеш -> `"execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))"`  
 *Advise*: какво се изпълнява, когато настъпи прекъсването.  
-*Aspect*: комбинацията от PointCut и Advise -> Какво ще прекъснеш и какво ще изпълниш.  
+*Aspect*: комбинацията от _PointCut_ и _Advise_ -> Какво ще прекъснеш и какво ще изпълниш.  
 *JoinPoint*: специфична инстанция на прекъсването. Носи информацията от прекъснатия метод.  
 *Weaving*: процеса на прекъсване и изпълняване на нещо.  
 *Weaver*: фреймуърка, който го имплементира.  
