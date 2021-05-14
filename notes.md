@@ -388,19 +388,123 @@ Loggingh, Security, Performence tracking взаимодействат между
 	}
 ```
 
+## Терминология
+
+*PointCut*: какво и къде ще прекъснеш -> `"execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))"`  
+*Advise*: какво се изпълнява, когато настъпи прекъсването.  
+*Aspect*: комбинацията от PointCut и Advise -> Какво ще прекъснеш и какво ще изпълниш.  
+*JoinPoint*: специфична инстанция на прекъсването. Носи информацията от прекъснатия метод.  
+*Weaving*: процеса на прекъсване и изпълняване на нещо.  
+*Weaver*: фреймуърка, който го имплементира.  
+
+```JAVA
+	@Aspect
+	@Configuration
+	public class UseAccessAspect {
+	
+		private Logger logger = LoggerFactory.getLogger(this.getClass());
+		
+		@Before("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")
+		public void before(JoinPoint joinPoint){
+			
+			make some things...
+			logger.info(" Check for user access ");
+		}
+	}
+```
+
+---
+
+
+### Before
+
 Трябва да му кажеш кои методи прекъсваш.  
 Првиш си клас с анотации `@Aspect` и @Configuration`
 
 На метода, който ще изпълняваш, когато прекъсваш: 
 
-> @Before прекъсва преди изпълнението. 
+> @Before - прекъсва преди изпълнението. 
 
 `@Before("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")`  
 
 1-ва звезда -> всичко в пекиджа
-пекиджа
+com.in28minutes.spring.aop.springaop.business -> пекиджа 
 .* -> всички класове
 второ .* -> всички методи
+(..) -> извикани с всякакъв вид аргументи
+
+`@Before("execution(* com.in28minutes.spring.aop.springaop..*.*(..))")`  
+ще бъдат прекъсвани всички извиквания
+
+---
+
+
+### After
+
+Можеш да вземеш резултата от *успешното* изпълнение на метод:  
+
+```Java
+1	@Aspect
+2	@Configuration
+3	public class AfterAopAspect {
+4	
+5		private Logger logger = LoggerFactory.getLogger(this.getClass());
+6	
+7		@AfterReturning(
+8				value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))", 
+9				returning = "result"
+10				)
+11		public void afterReturning(JoinPoint joinPoint, Object result) {
+12			logger.info("{} returned with value {}", joinPoint, result);
+13		}
+14		
+15		@After(value = "execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")
+16		public void after(JoinPoint joinPoint) {
+17			logger.info("after execution of {}", joinPoint);
+18		}
+19	}
+```
+
+7-10 Map-ва резултата към обекта Object result. Ти си знаеш какво е това и какво да го правиш по-нататък.  
+11 Подаваш резултата на метода за изпълнение (Advise).  
+
+> @After - прекъсва след изпълнението, без значение дали е гръмнало или не.
+
+> @AfterReturning - визма резултата от метода, ако е минал успешно.
+
+> @AfterThrowing - прекъсва Exceptions.
+
+---
+
+### Around
+
+```Java
+	@Aspect
+	@Configuration
+	public class MethodExecutionCalculationAspect {
+	
+		private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+		@Around("com.in28minutes.spring.aop.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")
+		public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+			long startTime = System.currentTimeMillis();
+	
+			joinPoint.proceed();
+	
+			long timeTaken = System.currentTimeMillis() - startTime;
+			logger.info("Time Taken by {} is {}", joinPoint, timeTaken);
+		}
+	}
+```
+
+С `@Around` прекъсваш преди изпълнението.  
+Взимаш текущото време преди.   
+ProceedingJoinPoint - позволява ти да изпълниш метода. `joinPoint.proceed();`   
+Взимаш текущото време след и калкулираш.   
+
+---
+
+До 72. Best Practice : Use common Pointcut Configuration
 
 
 
