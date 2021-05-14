@@ -358,11 +358,11 @@ _AOP dependency is not available on the Spring Initializr website anymore._
 
 AspectJ е по-силно от Spring AOP.  
 Използваш AOP за да прекъснеш всякакви извиквания на бийновете.  
-Loggingh, Security, Performence tracking взаимодействат между всички слоеве (@Srvive, @Repository etc.) на апп-а - Cross-cutting concerns.
+Loggingh, Security, Performence tracking взаимодействат между всички слоеве (@Srvive, @Repository etc.) на апп-а - Cross-cutting concerns.  
 Имплементираш на едно място и проверяваш например дали юзера има достъп за всички класове и методи от целия пекидж.  
 
 Когато Мейн класа имплементира CommandLineRunner получаваш run-методa.  
-Също така вече не е нужно да са ти статични методите в Мейн класа, можеш и да @Autowired други бийнове.
+Също така вече не е нужно да са ти статични методите в Мейн класа, можеш и да `@Autowired` други бийнове.
 
 ```Java
 	@SpringBootApplication
@@ -419,22 +419,21 @@ Loggingh, Security, Performence tracking взаимодействат между
 ### Before
 
 Трябва да му кажеш кои методи прекъсваш.  
-Првиш си клас с анотации `@Aspect` и @Configuration`
+Првиш си клас с анотации `@Aspect` и `@Configuration`
 
 На метода, който ще изпълняваш, когато прекъсваш: 
 
 > @Before - прекъсва преди изпълнението. 
 
 `@Before("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")`  
-
-1-ва звезда -> всичко в пекиджа
-com.in28minutes.spring.aop.springaop.business -> пекиджа 
-.* -> всички класове
-второ .* -> всички методи
-(..) -> извикани с всякакъв вид аргументи
+1-ва звезда -> всичко в пекиджа  
+`com.in28minutes.spring.aop.springaop.business` -> пекиджа  
+`.*` -> всички класове  
+второ `.*` -> всички методи  
+`(..)` -> извикани с всякакъв вид аргументи  
 
 `@Before("execution(* com.in28minutes.spring.aop.springaop..*.*(..))")`  
-ще бъдат прекъсвани всички извиквания
+ще бъдат прекъсвани всички извиквания за апп-а
 
 ---
 
