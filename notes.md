@@ -512,10 +512,10 @@ ProceedingJoinPoint - позволява ти да изпълниш метода
 	public class CommonJoinPointConfig {
 		
 		@Pointcut("execution(* com.in28minutes.spring.aop.springaop.data.*.*(..))")
-		public void dataLayerExecution(){}
+		public void dataLayerExecution(){} // всичко в data package
 		
 		@Pointcut("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")
-		public void businessLayerExecution(){}
+		public void businessLayerExecution(){} // всичко в business package
 		
 		@Pointcut("dataLayerExecution() && businessLayerExecution()")
 		public void allLayerExecution(){} // всичко от data и business
@@ -564,7 +564,7 @@ ProceedingJoinPoint - позволява ти да изпълниш метода
 	}
 ```
 
-Дефинираш `@PointCut` с префикса "@annotation" в класа където описваш PointCuts:  
+Дефинираш `@PointCut` с префикса "@annotation" в класа, където описваш PointCuts:  
 ```Java
 	@Pointcut("@annotation(com.in28minutes.spring.aop.springaop.aspect.TrackTime)")
 	public void trackTimeAnnotation(){}
@@ -600,20 +600,8 @@ ProceedingJoinPoint - позволява ти да изпълниш метода
 
 
 
+До 77. Step 01 - Setting up a project with JDBC, JPA, H2 and Web Dependencies
 
-
-
-
-
-
-
-
-
-
-
-
-
-До 72. Best Practice : Use common Pointcut Configuration
 
 
 
