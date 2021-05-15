@@ -503,6 +503,89 @@ ProceedingJoinPoint - позволява ти да изпълниш метода
 
 ---
 
+## Best practices
+
+Можеш да създадеш клас с Point Cuts и да ги извикваш по-лесно и от много места.  
+Празен метод с `@Pointcut` анотация и израз.  
+
+```Java
+	public class CommonJoinPointConfig {
+		
+		@Pointcut("execution(* com.in28minutes.spring.aop.springaop.data.*.*(..))")
+		public void dataLayerExecution(){}
+		
+		@Pointcut("execution(* com.in28minutes.spring.aop.springaop.business.*.*(..))")
+		public void businessLayerExecution(){}
+		
+		@Pointcut("dataLayerExecution() && businessLayerExecution()")
+		public void allLayerExecution(){} // всичко от data и business
+		
+		@Pointcut("bean(*dao*)")
+		public void beanContainingDao(){} // всичко, което съдържа dao в името си
+		
+		@Pointcut("within(com.in28minutes.spring.aop.springaop.data..*)")
+		public void dataLayerExecutionWithWithin(){} // всичко в data package
+	
+		@Pointcut("@annotation(com.in28minutes.spring.aop.springaop.aspect.TrackTime)")
+		public void trackTimeAnnotation(){}
+	
+	}
+```
+
+После където искаш да го изпълниш даваш пътя до `CommonJoinPointConfig` класа и нужния метод:  
+
+```Java
+	@Aspect
+	@Configuration
+	public class UserAccessAspect {
+		
+		private Logger logger = LoggerFactory.getLogger(this.getClass());
+		
+		@Before("com.in28minutes.spring.aop.springaop.aspect.CommonJoinPointConfig.dataLayerExecution()")
+		public void before(JoinPoint joinPoint){
+	
+			logger.info(" Check for user access ");
+			logger.info(" Allowed execution for {}", joinPoint);
+		}
+	}
+```
+
+---
+
+## Custom Anotation
+
+Създаваме custom анотация за измерване на времето за изпълнение `@TrackTime`  
+
+```Java
+	@Target(ElementType.METHOD) // Само на методи без класове
+	@Retention(RetentionPolicy.RUNTIME) // Изпълнява се през цялото време, когато работи апп-а
+	public @interface TrackTime { // Името на анотацията
+	
+	}
+```
+
+Дефинираш `@PointCut` с префикса "@anotation" в класа където описваш PointCuts:  
+```Java
+	@Pointcut("@annotation(com.in28minutes.spring.aop.springaop.aspect.TrackTime)")
+	public void trackTimeAnnotation(){}
+```  
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 До 72. Best Practice : Use common Pointcut Configuration
 
 
