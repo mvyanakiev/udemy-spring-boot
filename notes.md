@@ -552,25 +552,52 @@ ProceedingJoinPoint - позволява ти да изпълниш метода
 
 ---
 
-## Custom Anotation
+## Custom Annotation
 
 Създаваме custom анотация за измерване на времето за изпълнение `@TrackTime`  
 
 ```Java
-	@Target(ElementType.METHOD) // Само на методи без класове
+	@Target(ElementType.METHOD) // Само на методи, без класове
 	@Retention(RetentionPolicy.RUNTIME) // Изпълнява се през цялото време, когато работи апп-а
 	public @interface TrackTime { // Името на анотацията
 	
 	}
 ```
 
-Дефинираш `@PointCut` с префикса "@anotation" в класа където описваш PointCuts:  
+Дефинираш `@PointCut` с префикса "@annotation" в класа където описваш PointCuts:  
 ```Java
 	@Pointcut("@annotation(com.in28minutes.spring.aop.springaop.aspect.TrackTime)")
 	public void trackTimeAnnotation(){}
 ```  
 
+Добавяш логиката.
+```Java
+	@Aspect
+	@Configuration
+	public class MethodExecutionCalculationAspect {
+	
+		private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+		@Around("пътя до класа с PointCut описанието + името на метода")
+		public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+			long startTime = System.currentTimeMillis();
+	
+			joinPoint.proceed();
+	
+			long timeTaken = System.currentTimeMillis() - startTime;
+			logger.info("Time Taken by {} is {}", joinPoint, timeTaken);
+		}
+	}
+```
+
 ---
+
+# Database access
+[Repo](https://github.com/in28minutes/spring-master-class/tree/master/04-spring-jdbc-to-jpa)
+
+
+# JDBC
+
 
 
 
