@@ -597,18 +597,55 @@ ProceedingJoinPoint - позволява ти да изпълниш метода
 
 
 # JDBC
+[Debugging guide for H2database](https://github.com/in28minutes/in28minutes-initiatives/blob/master/The-in28Minutes-TroubleshootingGuide-And-FAQ/jpa-and-hibernate.md)
+
+
+За да можеш да се логнеш в H2 базата трябва да разрешиш нейната конзола (1).  
+За да не генерира ново име на всеки рестарт добавяш (2).  
+В `application.properties` добавяш:  
+```
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.jpa.defer-datasource-initialization=true
+spring.data.jpa.repositories.bootstrap-mode=default
+```
+
+localhost:8080/h2-console/  
+JDBC URL: jdbc:h2:mem:testdb   
+
+Ако в src/main/resources направищ файл "data.sql" ще се изпълнява всеки път като се стартира апп-а.
+С DDL му казаваш какви таблици да направи и после си инсъртваш данните, които ти трябват.
+
+
+Взимаш Spring класа за връзка с база `JdbcTemplate`, който използва SQL:  
+```Java
+@Repository
+public class PersonJbdcDao {
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	
+	public List<Person> findAll() {
+		return jdbcTemplate.query("SELECT * FROM person", new PersonRowMapper());
+	}
+	
+	class PersonRowMapper implements RowMapper<Person>{
+		@Override
+		public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Person person = new Person();
+			person.setId(rs.getInt("id"));
+			person.setName(rs.getString("name"));
+			person.setLocation(rs.getString("location"));
+			person.setBirthDate(rs.getTimestamp("birth_date"));
+			return person;
+		}	
+	}
+```
 
 
 
-До 77. Step 01 - Setting up a project with JDBC, JPA, H2 and Web Dependencies
 
-
-
-
-
-
-
-
+До 85. Step 07 - A Quick Review - JDBC vs Spring JDBC
 
 
 
