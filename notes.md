@@ -642,10 +642,18 @@ public class PersonJbdcDao {
 	}
 ```
 
+Предимството на Spring Jdbc пред обикновения е, че пишеш по-малко код (не ти трябва raw-mapper) и има exception handler, ако гръмне Spring ше ти затвори кънекшъна автоматично.  
+
+Ако в `application.properties` добавиш:
+```
+logging.level.root=debug
+```
+ще имаш пълния лог на апп-а.
 
 
 
-До 85. Step 07 - A Quick Review - JDBC vs Spring JDBC
+До 88. Step 10 - Implementing deleteById Spring JDBC Update Method
+
 
 
 
