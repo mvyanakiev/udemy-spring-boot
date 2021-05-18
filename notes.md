@@ -625,11 +625,21 @@ public class PersonJbdcDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	public List<Person> findAll() {
-		return jdbcTemplate.query("SELECT * FROM person", new PersonRowMapper());
-	}
-	
+    public List<Person> findAll() {
+        return jdbcTemplate.query("SELECT * FROM person",
+            new BeanPropertyRowMapper(Person.class));
+    }
+}
+```
+
+Когато взимаш всичко оъ таблицата използваш дефолтния Row-mapper `new BeanPropertyRowMapper<Person>(Person.class)`
+Ако взимаш само някои колони си правиш сам Row-mapper.
+
+Правиш вътрешен клас, защото се използва само в dao-то.
+
+```Java
 	class PersonRowMapper implements RowMapper<Person>{
+	
 		@Override
 		public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Person person = new Person();
@@ -639,7 +649,6 @@ public class PersonJbdcDao {
 			person.setBirthDate(rs.getTimestamp("birth_date"));
 			return person;
 		}	
-	}
 ```
 
 Предимството на Spring Jdbc пред обикновения е, че пишеш по-малко код (не ти трябва raw-mapper) и има exception handler, ако гръмне Spring ше ти затвори кънекшъна автоматично.  
@@ -650,14 +659,19 @@ logging.level.root=debug
 ```
 ще имаш пълния лог на апп-а.
 
+---
+
+# JPA
+
+JPA е като интерфейс. Дефинира набор от анотации, и се грижи да създаде правилно query.  
+Hybernet e имплементация на JPA.
+
+> ORM = Object relational mapping
 
 
-До 88. Step 10 - Implementing deleteById Spring JDBC Update Method
 
 
 
 
-
-
-
+До 92. Step 14 - Defining Person Entity
 
