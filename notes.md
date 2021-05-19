@@ -669,9 +669,52 @@ Hybernet e имплементация на JPA.
 > ORM = Object relational mapping
 
 
+```Java
+	@Entity
+	@Table(name="person") 		// Ако съвпада с името на таблицата не е нужно
+	public class Person {
+	
+		@Id 					// Primary key
+		@GeneratedValue
+		private int id;
+	
+		@Column(name = "name") 	// Ако съвпада с името на колоната не е нужно
+		private String name;
+	
+		private String location;
+		private Date birthDate;
+	
+		public Person() {} 		// Задължително за Hybernet празен конструктор
+	
+	
+								// Конструктор без id за Hybernet
+								
+		public Person(String name, String location, Date birthDate) { 
+			super();
+			this.name = name;
+			this.location = location;
+			this.birthDate = birthDate;
+		}
+	
+		public int getId() {
+			return id;
+		}
+	}
+```
+
+Transactions e по-добре да са в бизнес сървиса, отколкото в репозиторито.  
+
+
+Ако в `application.properties` добавиш:
+```
+spring.jpa.show-sql=true
+```
+В показва SQL-a
 
 
 
 
-До 92. Step 14 - Defining Person Entity
+
+
+До 97. Step 19 - Introduction to Spring Data JPA
 
