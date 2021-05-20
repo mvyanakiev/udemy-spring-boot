@@ -619,17 +619,17 @@ JDBC URL: jdbc:h2:mem:testdb
 
 Взимаш Spring класа за връзка с база `JdbcTemplate`, който използва SQL:  
 ```Java
-@Repository
-public class PersonJbdcDao {
-
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+	@Repository
+	public class PersonJbdcDao {
 	
-    public List<Person> findAll() {
-        return jdbcTemplate.query("SELECT * FROM person",
-            new BeanPropertyRowMapper(Person.class));
-    }
-}
+		@Autowired
+		JdbcTemplate jdbcTemplate;
+		
+		public List<Person> findAll() {
+			return jdbcTemplate.query("SELECT * FROM person",
+				new BeanPropertyRowMapper(Person.class));
+		}
+	}
 ```
 
 Когато взимаш всичко оъ таблицата използваш дефолтния Row-mapper `new BeanPropertyRowMapper<Person>(Person.class)`
@@ -760,12 +760,15 @@ pom.xml:
 # Basic Web Application
 [Repo](https://github.com/in28minutes/spring-master-class/tree/master/02-basic-web-application)
 
+GroupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx
+ArtifactId: Адреса на приложението - something-web-service
+war - Web ARchive, за уеб приложения
+jar - Java ARchive, за Джава приложения (библиотеки и др.)
 
 
 
 
 
+До 102. Step 01 : Theory 1 - Maven and Magic
 
-
-До 97. Step 19 - Introduction to Spring Data JPA
 
