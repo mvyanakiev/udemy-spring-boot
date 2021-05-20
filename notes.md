@@ -709,7 +709,58 @@ Transactions e по-добре да са в бизнес сървиса, отк�
 ```
 spring.jpa.show-sql=true
 ```
-В показва SQL-a
+показва SQL-a
+
+---
+
+
+## Spring Data JPA
+
+Елиминира писането на много код, тъй като повечето репозиторита са еднакви, но с различно Entity.
+Има готови методи за `findAll`, `findById`, `deleteById`, `save` и т.н.
+Дописва ти само, когато правиш нови методи.   
+
+```Java
+	public interface PersonSpringDataRepository extends JpaRepository<Person, Integer> { // Връща Person, Primary key е Integer
+		public List<Person> findPersonByLocation(String location); // Създаваш само нужните методи, другите си ги има
+	}
+```
+
+---
+
+## Връзка с MySQL база
+
+pom.xml:
+```XML
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>
+```
+
+`application.properties`:
+```
+	spring.jpa.hibernate.ddl-auto=none
+	spring.datasource.url=jdbc:mysql://localhost:3306/person_example
+	spring.datasource.username=personuser
+	spring.datasource.password=YOUR_PASSWORD
+```
+
+`spring.jpa.hibernate.ddl-auto` ако е none не се съзадва база, може да е:  
+ * none : No action will be performed.
+ * create-only : Database creation will be generated.
+ * drop : Database dropping will be generated.
+ * create : Database dropping will be generated followed by database creation.
+ * validate : Validate the database schema
+ * update : Update the database schema
+
+---
+
+
+# Basic Web Application
+[Repo](https://github.com/in28minutes/spring-master-class/tree/master/02-basic-web-application)
+
+
 
 
 
