@@ -648,7 +648,8 @@ JDBC URL: jdbc:h2:mem:testdb
 			person.setLocation(rs.getString("location"));
 			person.setBirthDate(rs.getTimestamp("birth_date"));
 			return person;
-		}	
+		}
+	}
 ```
 
 Предимството на Spring Jdbc пред обикновения е, че пишеш по-малко код (не ти трябва raw-mapper) и има exception handler, ако гръмне Spring ше ти затвори кънекшъна автоматично.  
@@ -746,7 +747,7 @@ pom.xml:
 	spring.datasource.password=YOUR_PASSWORD
 ```
 
-`spring.jpa.hibernate.ddl-auto` ако е none не се съзадва база, може да е:  
+`spring.jpa.hibernate.ddl-auto` ако е _none_ не се съзадва база, може да е:  
  * none : No action will be performed.
  * create-only : Database creation will be generated.
  * drop : Database dropping will be generated.
@@ -778,7 +779,7 @@ jar - Java ARchive, за Джава приложения (библиотеки �
 Servlet е клас, който взима Http request за вход и връща Http response за изход.  
 Всеки servlet трябва да extends HttpServlet.  
 Трябва да знае на кой адрес слуша `@WebServlet(urlPatterns = "/login.do")`  
-За да прихванеш Get метода трябва да имаш doGet метод.  
+За да прихванеш Get метода от браузъра трябва да имаш doGet метод.  
 Четеме от request-a и връщаме информацията в response-a.  
 
 
