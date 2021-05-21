@@ -760,15 +760,32 @@ pom.xml:
 # Basic Web Application
 [Repo](https://github.com/in28minutes/spring-master-class/tree/master/02-basic-web-application)
 
-GroupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx
-ArtifactId: Адреса на приложението - something-web-service
-war - Web ARchive, за уеб приложения
-jar - Java ARchive, за Джава приложения (библиотеки и др.)
+> Java EE - Java platform, Eneterprice Edition (JEE)
+
+GroupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx  
+ArtifactId: Адреса на приложението - something-web-service  
+war - Web ARchive, за уеб приложения  
+jar - Java ARchive, за Джава приложения (библиотеки и др.)  
+
+
+В web.xml управляваш кое да се отваря като home page
+```xml
+    <welcome-file-list>
+        <welcome-file>login.do</welcome-file>
+    </welcome-file-list>
+```
+
+Servlet е клас, който взима Http request за вход и връща Http response за изход.  
+Всеки servlet трябва да extends HttpServlet.  
+Трябва да знае на кой адрес слуша `@WebServlet(urlPatterns = "/login.do")`  
+За да прихванеш Get метода трябва да имаш doGet метод.  
+Четеме от request-a и връщаме информацията в response-a.  
 
 
 
 
 
-До 102. Step 01 : Theory 1 - Maven and Magic
+До106. Step 02 : Create LoginServlet From Scratch Again and Your First View
+
 
 

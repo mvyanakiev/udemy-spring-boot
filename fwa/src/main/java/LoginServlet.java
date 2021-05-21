@@ -38,6 +38,11 @@ public class LoginServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("My First Servlet");
+
+        out.println("</br>");
+        out.println("Session id is:");
+        out.println(request.getSession().getId());
+
         out.println("</body>");
         out.println("</html>");
     }
