@@ -593,7 +593,7 @@ ProceedingJoinPoint - позволява ти да изпълниш метода
 ---
 
 # Database access
-[Course repo](https://github.com/in28minutes/spring-master-class/tree/master/04-spring-jdbc-to-jpa)
+[Course repo](https://github.com/in28minutes/spring-master-class/tree/master/04-spring-jdbc-to-jpa)  
 [My repo](https://github.com/mvyanakiev/udemy-spring-boot/tree/main/db)
 
 
@@ -760,7 +760,7 @@ pom.xml:
 
 
 # Basic Web Application
-[Course repo](https://github.com/in28minutes/spring-master-class/tree/master/02-basic-web-application)
+[Course repo](https://github.com/in28minutes/spring-master-class/tree/master/02-basic-web-application)  
 [My repo](https://github.com/mvyanakiev/udemy-spring-boot/tree/main/fwa)
 
 > Java EE - Java platform, Eneterprice Edition (JEE)
@@ -787,19 +787,28 @@ Servlet е клас, който взима Http request за вход и връ�
 Когато създаваш JSP то се конвертира до servlet накрая.  
 Ползваме JSP, защото е по-лесно да пишем динамично съдържание там, отоколото в servlet и е създаден за HTML.  
 
-"?" отделя URL от параметъра, който подаваш.
-```http://localhost:8080/login.do?name=pesho```
+"?" отделя URL от параметъра, който подаваш.   
+```http://localhost:8080/login.do?name=pesho```   
 `name=pesho` се нарича _Request parameter_.  
 Параметър е каквото минава между браузъра и сървъра на приложението.  
 Сървлетът взима параметъра, обработва и поставя _Атрибут_ в request-а.  
+```Java
+        String name = request.getParameter("name");
+        request.setAttribute("name", name);
+```
 В JSP-то го взмимаш с `${име на параметъра}`. Нарича се Expression language.  
+```HTML
+	<h1>Hello ${name}</h1>
+```
+Java написана в JSP се нарича _Scriptlet_ и се отедля с `<%` и `%>`.   
+По възможност трябва максимално да се избягва.
 
 
 
 
 
+До 110. Step 04 : Disadvantages of Get Parameters
 
-До106. Step 02 : Create LoginServlet From Scratch Again and Your First View
 
 
 
