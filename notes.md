@@ -765,10 +765,10 @@ pom.xml:
 
 > Java EE - Java platform, Eneterprice Edition (JEE)
 
-GroupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx  
-ArtifactId: Адреса на приложението - something-web-service  
-war - Web ARchive, за уеб приложения  
-jar - Java ARchive, за Джава приложения (библиотеки и др.)  
+ * groupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx  
+ * artifactId: Адреса на приложението - something-web-service  
+ * war - Web ARchive, за уеб приложения  
+ * jar - Java ARchive, за Джава приложения (библиотеки и др.)  
 
 
 В web.xml управляваш кое да се отваря като home page
@@ -796,7 +796,7 @@ Servlet е клас, който взима Http request за вход и връ�
         String name = request.getParameter("name");
         request.setAttribute("name", name);
 ```
-В JSP-то го взмимаш с `${име на параметъра}`. Нарича се Expression language.  
+В JSP-то го взмимаш с `${име на параметъра}`. Нарича се _Expression language_.  
 ```HTML
 	<h1>Hello ${name}</h1>
 ```
