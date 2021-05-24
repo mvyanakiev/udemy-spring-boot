@@ -825,12 +825,15 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 * Къде да намери информация за контекста на апп-а 
 * Адерса, който ще мапва
 
+Можеш да мап-неш различни адреси към различни сървлети.  
+
+`@ResponseBody` указва на Spring, че това което получва като резултат от извикания в контролера метод не е име на view или URL.
 
 
 
 
+До 118. Step 13 : Part 1 - Your First Spring MVC View : ViewResolver
 
-До 117. Step 12 : Your First Spring MVC Controller
 
 
 

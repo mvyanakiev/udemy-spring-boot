@@ -8,23 +8,24 @@
         <welcome-file>login.do</welcome-file>
     </welcome-file-list>
 
-    <!-- Име и клас-->
     <servlet>
+        <!-- Име -->
         <servlet-name>dispatcher</servlet-name>
+        <!-- Клас -->
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
 
-        <!-- Къде е контекст инфото -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
+            <!-- Къде е информацията за контекста -->
             <param-value>/WEB-INF/todo-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!-- Адрес за мапване -->
     <servlet-mapping>
+        <!-- Адрес за мапване за сървлета с това име -->
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/spring-mvc/*</url-pattern>
     </servlet-mapping>
