@@ -813,6 +813,8 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 
 
 # Spring MVC
+[Course repo](https://github.com/in28minutes/spring-master-class/tree/master/02-basic-web-application)  
+[My repo](https://github.com/mvyanakiev/udemy-spring-boot/tree/main/fwa-spring-mvc)
 
 > _Transitive dependency_ са другите dependency-та, които идват сами с избраното от теб нещо.
 
