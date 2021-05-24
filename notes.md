@@ -813,7 +813,7 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 
 
 
-До 110. Step 04 : Disadvantages of Get Parameters
+До 
 
 
 
