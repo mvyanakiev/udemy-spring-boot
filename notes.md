@@ -819,7 +819,8 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 > _Transitive dependency_ са другите dependency-та, които идват сами с избраното от теб нещо.
 
 Всичкия входящ трaфик идва в `Dispatcher servlet` и той го предава на съответните контролери. 
-Добавяш го като bean.   
+Респективно сървиса връща на контролера и контролера връща на `Dispatcher servlet` модела и кое view да рендерира към на браузъра.  
+Добавяш `Dispatcher servlet` като bean.   
 
 Конфигуриране в `web.xml`:  
 * Име, което е каквото му дадеш
@@ -829,12 +830,33 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 
 Можеш да мап-неш различни адреси към различни сървлети.  
 
-`@ResponseBody` указва на Spring, че това което получва като резултат от извикания в контролера метод не е име на view или URL.
+> Controller и Handler е едно и също.
+
+`@ResponseBody` указва на Spring, че това което получва като резултат от извикания в контролера метод не е име на view или URL, а текст стринг.  
+За да пренасочваш return-a към view ти трябва View Resolver. Той добава пътя към view-то като префикс и ".jsp" като суфикс, и когато получи "login" връща "/WEB-INF/views/login.jsp". Понеже е bean го добавяш в xml-a с конфигурацията на контекста.   
+
+Каквото поставиш в "src/main/resources" е достъпно в class-path.  
+Там дършиш property файлове, xml-и и др. конфигурационни файлове.  
+
+За да ползваш `log4j` е нужно да създадеш файл "log4j.properties" в ресурсите.  
+В него ако има `org.springframework=Everything` логваш всичко.  
+
+Има 5 нива на логване:
+1. TRACE
+2. DEBUG
+3. INFO
+4. WARN
+5. ERROR
+
+Избираш с `log4j.rootLogger=TRACE`  
+Като `TRACE` e всичко, `ERROR` e само грешките.  
 
 
 
 
-До 118. Step 13 : Part 1 - Your First Spring MVC View : ViewResolver
+
+До 122. Step 15 : Redirect to Welcome Page : ModelMap and @RequestParam
+
 
 
 
