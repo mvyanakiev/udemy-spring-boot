@@ -7,6 +7,7 @@
 <body>
 
 <h1>Welcome, ${name}!</h1>
+<h1>Password: ${password}</h1>
 
 </body>
 </html>

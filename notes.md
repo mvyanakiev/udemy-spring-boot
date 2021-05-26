@@ -851,11 +851,24 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 Избираш с `log4j.rootLogger=TRACE`  
 Като `TRACE` e всичко, `ERROR` e само грешките.  
 
+Ако на метода не добавиш типа (GET, POST...) ще взима всички рикуести.  
+Контролера взима параметрите от POST метода с `@RequestParam`.   
+Моделът `model.put("name", name)` пренася информацията между контролера и view-то.  
+
+```Java
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String handleLoginRequest(@RequestParam String name, ModelMap model) {
+        model.put("name", name);
+        return "welcome";
+    }
+```
 
 
 
 
-До 122. Step 15 : Redirect to Welcome Page : ModelMap and @RequestParam
+
+До 123. Step 16 : Use LoginService to Authenticate
+
 
 
 
