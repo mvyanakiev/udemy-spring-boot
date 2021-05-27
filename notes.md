@@ -867,12 +867,15 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 Определя къде ще се търсят бийновете.  
 В случая във всички subpackages на "com.in28minutes".  
 
+---
+
+# Maven
+[Maven repo](https://github.com/in28minutes/spring-master-class/tree/master/00-framework-tool-introductions/02.Maven-Introduction-In-5-Steps)  
 
 
 
+До 131. Section Introduction - Maven in 5 Steps
 
-
-До 126. Step 1 : Create a Java Project
 
 
 
