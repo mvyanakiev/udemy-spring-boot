@@ -863,11 +863,17 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
     }
 ```
 
+`<context:component-scan base-package="com.in28minutes" />` 
+Определя къде ще се търсят бийновете.  
+В случая във всички subpackages на "com.in28minutes".  
 
 
 
 
-До 123. Step 16 : Use LoginService to Authenticate
+
+
+До 126. Step 1 : Create a Java Project
+
 
 
 
