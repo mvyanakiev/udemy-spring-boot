@@ -816,8 +816,6 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 [Course repo](https://github.com/in28minutes/spring-master-class/tree/master/02-basic-web-application)  
 [My repo](https://github.com/mvyanakiev/udemy-spring-boot/tree/main/fwa-spring-mvc)
 
-> _Transitive dependency_ са другите dependency-та, които идват сами с избраното от теб нещо.
-
 Всичкия входящ трaфик идва в `Dispatcher servlet` и той го предава на съответните контролери. 
 Респективно сървиса връща на контролера и контролера връща на `Dispatcher servlet` модела и кое view да рендерира към на браузъра.  
 Добавяш `Dispatcher servlet` като bean.   
@@ -869,12 +867,56 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 
 ---
 
+
 # Maven
 [Maven repo](https://github.com/in28minutes/spring-master-class/tree/master/00-framework-tool-introductions/02.Maven-Introduction-In-5-Steps)  
 
 
+ * groupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx  
+ * artifactId: Име и адрес на приложението - something-web-service  
+ 
+ Накрая става "xxx.com/something-web-service".  
+ С "groupId" и "artifactId" дефинираш проекта за да можеш да използваш код от него на друго място.  
+ `SNAPSHOT` покава че е версия в равитие (недовършена, без фиксирана версия).  
+ 
+ * war - Web ARchive, за уеб приложения  
+ * jar - Java ARchive, за Джава приложения (библиотеки и др.)  
+ * ear - Enterprice ARchive (може да съдържа много war файлове)  
 
-До 131. Section Introduction - Maven in 5 Steps
+`<parent>` както Java класовете, така и  pom файловете могат да наследяват. `<parent>` показва кой е родителя.  
+
+> _Transitive dependency_ са другите dependency-та, които идват сами с избраното от теб нещо.
+
+Дефиниране репозиторито:  
+
+```XML
+  <scm>
+    <connection>scm:git:git://github.com/spring-projects/spring-boot.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/spring-projects/spring-boot.git</developerConnection>
+    <url>https://github.com/spring-projects/spring-boot</url>
+  </scm>
+```
+
+## Build life cycle
+
+
+ * Validate
+ * Compile (отделно компилира сорс и тест кода)  
+ * Test (unit tests)  
+ * Package (build a jar/war)  
+ * Integration Test (ако има)  
+ * Verify
+ * Install (взима генерирания артефакт и го поставя в локално репозитори "target" папката)  
+ * Deploy (поставя го в отдалечено репозитори)  
+
+
+### Convention over Configuration - Pre defined folder structure  
+
+Source Code  
+ * ${basedir}/src/main/java  
+ * ${basedir}/src/main/resources  
+Test Code  
+ * ${basedir}/src/test  
 
 
 
@@ -882,6 +924,5 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 
 
 
-
-
+До 135. Step 4 : How does Maven Work?
 
