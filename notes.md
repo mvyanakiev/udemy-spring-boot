@@ -889,7 +889,7 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 
 Дефиниране репозиторито:  
 
-```XML
+```xml
   <scm>
     <connection>scm:git:git://github.com/spring-projects/spring-boot.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/spring-projects/spring-boot.git</developerConnection>
@@ -897,8 +897,8 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
   </scm>
 ```
 
-## Build life cycle
 
+## Build life cycle
 
  * Validate
  * Compile (отделно компилира сорс и тест кода)  
@@ -909,6 +909,7 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
  * Install (взима генерирания артефакт и го поставя в локално репозитори "target" папката)  
  * Deploy (поставя го в отдалечено репозитори)  
 
+---
 
 ### Convention over Configuration - Pre defined folder structure  
 
@@ -918,11 +919,15 @@ Source Code
 Test Code  
  * ${basedir}/src/test  
 
+---
+
+### Important Maven Commands
+
+`mvn help:effective-settings` - покзава текущите настройки, проблеми при връзка с отдалечени репозиторита;   
+`mvn help:effective-pom` - показава съдържанието на всички pom файлове от текущи до всички наследени от него;  
+`mvn dependency:tree` - показва йерархично всички dependency-та в проекта;  
+`mvn dependency:sources` - всички сорсове на всички dependency-та се свалят локално;  
+`mvn [verufy] --debug` - показва всичко, което се случва докато изпълнява целта "verify";  
 
 
-
-
-
-
-До 135. Step 4 : How does Maven Work?
-
+---
