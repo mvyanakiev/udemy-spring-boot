@@ -872,7 +872,7 @@ Java написана в JSP се нарича _Scriptlet_ и се отедля 
 [Maven repo](https://github.com/in28minutes/spring-master-class/tree/master/00-framework-tool-introductions/02.Maven-Introduction-In-5-Steps)  
 
 
- * groupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx  
+ * groupId: App's Location, обикновено е домейна обратно написан com.xxx, org.xxx (организацията за която се създава проекта, за да има и ред в .m2 папката освен всичко друго).  
  * artifactId: Име и адрес на приложението - something-web-service  
  
  Накрая става "xxx.com/something-web-service".  
@@ -924,7 +924,7 @@ Test Code
 ### Important Maven Commands
 
 `mvn help:effective-settings` - покзава текущите настройки, проблеми при връзка с отдалечени репозиторита;   
-`mvn help:effective-pom` - показава съдържанието на всички pom файлове от текущи до всички наследени от него;  
+`mvn help:effective-pom` - показава съдържанието на всички pom файлове от текущия до всички наследени от него;  
 `mvn dependency:tree` - показва йерархично всички dependency-та в проекта;  
 `mvn dependency:sources` - всички сорсове на всички dependency-та се свалят локално;  
 `mvn [verufy] --debug` - показва всичко, което се случва докато изпълнява целта "verify";  
